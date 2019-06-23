@@ -2,10 +2,17 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <h2>Welcome to the Articles page</h2>
+    <ul>
+      <li> <a href="/articles/id/1">This will link to a article.</a></li>
+    </ul>
   </div>
 </template>
 
 <script>
+/*
+import ArticleForm from '@/components/ArticleForm.vue'
+import ArticleDisplay from '@/components/ArticleDisplay.vue'
+ */
 export default {
   name: 'articles',
   data () {
@@ -13,6 +20,11 @@ export default {
       msg: `Articles`
     }
   }
+/*   ,
+  components: {
+    ArticleForm,
+    ArticleDisplay
+  } */
 }
 </script>
 

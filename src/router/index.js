@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import Articles from '@/components/Articles'
+import ArticleForm from '@/components/ArticleForm'
+import ArticleDisplay from '@/components/ArticleDisplay'
 
 Vue.use(Router)
 
@@ -14,14 +16,19 @@ export default new Router({
       component: Hello
     },
     {
-      path: '/id',
+      path: '/articles',
       name: 'Articles',
       component: Articles
     },
     {
-      path: '/create',
+      path: '/articles/create',
       name: 'Create',
-      component: Post
+      component: ArticleForm
+    },
+    {
+      path: '/articles/id/:id',
+      name: 'Article',
+      component: ArticleDisplay
     }
   ]
 })
