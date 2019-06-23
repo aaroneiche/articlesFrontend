@@ -1,8 +1,6 @@
 <template>
   <div>
     <form>
-      This is where the article creation form is going to be.
-
       
     </form>
     <button @click="createArticle">Click me!</button>
