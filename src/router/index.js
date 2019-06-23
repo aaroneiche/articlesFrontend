@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/components/Hello'
+import Hello from '@/components/Home'
 import Articles from '@/components/Articles'
 import ArticleForm from '@/components/ArticleForm'
 import ArticleDisplay from '@/components/ArticleDisplay'

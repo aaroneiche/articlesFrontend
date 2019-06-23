@@ -1,8 +1,5 @@
 <template>
   <div id="app">
-    <header>
-      <span>Vue.js PWA</span>
-    </header>
     <main>
       <Navigation />
       <!-- <img src="./assets/logo.png" alt="Vue.js PWA"> -->
@@ -19,7 +16,6 @@ export default {
   components: {
     Navigation
   }
-
 }
 </script>
 
