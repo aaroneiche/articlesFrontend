@@ -1,5 +1,8 @@
 <template>
   <div class="hello">
+    <b-message v-if="errorMessage > ''" title="Danger" type="is-danger" aria-close-label="Close message">
+      <div>{{errorMessage}}</div>
+    </b-message>
     <h2>Welcome to the Articles page</h2>
     <table class="table is-bordered is-striped is-hoverable is-fullwidth">
       <thead>
@@ -27,11 +30,12 @@ export default {
   data () {
     return {
       msg: `Articles`,
-      articles: []
+      articles: [],
+      errorMessage: ``
     }
   },
-  beforeMount: function () {
-    this.getArticles()
+  mounted: function () {
+    this.getArticles();
   },
   methods: {
     getArticles () {
@@ -40,12 +44,22 @@ export default {
         url: 'http://localhost:8080/api/articles'
       }).then(res => {
         // if successful, provide a link there.
-        this.articles = res.data
+        this.articles = res.data;
 
         this.articles.forEach(a => {
-          a.date = dateformat(a.date, 'mmmm dS, yyyy')
+          a.date = dateformat(a.date, 'mmmm dS, yyyy');
         })
       })
+        .catch(err => {
+          this.isLoading = false;
+          if (!err.response) {
+            // network error
+            this.errorMessage = 'There was an error communicating with the server';
+          } else {
+            // occurs with a response from server
+            this.errorMessage = err.response.data.message;
+          }
+        })
     }
   }
 }

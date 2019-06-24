@@ -77,9 +77,24 @@ export default {
           categories: this.selectedCategories
         }
       }).then(res => {
-        // error handling
+        this.titleError = false;
+        this.bodyError = false;
+        this.categoryError = false;
+
         // if successful, provide a link there.
+        this.$toast.open('Article Posted!');
       })
+        .catch(res => {
+          this.titleError = false;
+          this.bodyError = false;
+          this.categoryError = false;
+          // error handling
+          this.$toast.open({
+            duration: 5000,
+            message: `Error Posting Article. Try Again Later`,
+            type: 'is-danger'
+          });
+        })
     }
   }
 }

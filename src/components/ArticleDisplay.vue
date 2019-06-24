@@ -10,7 +10,7 @@
     <b-loading :is-full-page="true" :active.sync="isLoading" :can-cancel="true"></b-loading>
 
 
-    <b-message v-if="errorMessage.length > 0" title="Danger" type="is-danger" aria-close-label="Close message">
+    <b-message v-if="errorMessage.length > 0" title="Error" type="is-danger" aria-close-label="Close message">
       <div>{{errorMessage}}</div>
       <router-link to="/articles/">Back the articles list</router-link>
     </b-message>
@@ -41,16 +41,19 @@ export default {
       }).then(res => {
         if (res.status === 200) {
           // if successful, provide a link there.
-          this.article = res.data
-          this.displayDate = dateformat(res.data.date, 'mmmm dS, yyyy')
-          this.isLoading = false
+          this.article = res.data;
+          this.displayDate = dateformat(res.data.date, 'mmmm dS, yyyy');
+          this.isLoading = false;
         }
       }).catch(err => {
-        console.log(err.response)
-        if (err.response.status === 404) {
-          // couldn't find that
-          this.errorMessage = err.response.data.error
-          this.isLoading = false
+        // console.log(err.response)
+        this.isLoading = false;
+        if (!err.response) {
+          // network error
+          this.errorMessage = 'Error: Network Error';
+        } else {
+          // occurs with a response from server
+          this.errorMessage = err.response.data.message;
         }
       })
     }
