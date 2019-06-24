@@ -1,7 +1,8 @@
 <template>
   <div id="app">
+    <Navigation />
     <main>
-      <Navigation />
+      
       <!-- <img src="./assets/logo.png" alt="Vue.js PWA"> -->
       <router-view></router-view>
     </main>
