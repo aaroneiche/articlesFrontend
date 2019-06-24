@@ -10,7 +10,7 @@
       </thead>
       <tbody>
           <tr v-for="article in articles" :key="article.id">
-              <td><router-link :to="`/articles/${article.id}`">{{article.title}}</router-link></td>
+              <td><router-link :to="`/articles/id/${article.id}`">{{article.title}}</router-link></td>
               <td>{{article.date}}</td>
           </tr>
       </tbody>
@@ -48,9 +48,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-h1, h2 {
-  font-weight: normal;
-}
 
 ul {
   list-style-type: none;
