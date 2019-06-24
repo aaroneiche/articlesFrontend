@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="column is-offset-2 is-8">
     <Navigation />
     <main>
       

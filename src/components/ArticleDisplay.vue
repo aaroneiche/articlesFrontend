@@ -1,16 +1,19 @@
 <template>
   <div class="hello">
     <h1>{{article.title}}</h1>
-    <div>Published on {{displayDate}}</div>
-    <div>{{article.body}}</div>
+    <div class="date">Published on {{displayDate}}</div>
+    <div class="categories">
+      <b-tag rounded is-large v-for="category in article.categories">{{category}}</b-tag>
+    </div>
+    <div class="body">{{article.body}}</div>
+
     <b-loading :is-full-page="true" :active.sync="isLoading" :can-cancel="true"></b-loading>
+
 
     <b-message v-if="errorMessage.length > 0" title="Danger" type="is-danger" aria-close-label="Close message">
       <div>{{errorMessage}}</div>
       <router-link to="/articles/">Back the articles list</router-link>
     </b-message>
-
-
   </div>
 </template>
 
@@ -57,3 +60,14 @@ export default {
   }
 }
 </script>
+<style>
+h1{
+  font-size: 3em;
+}
+div.date {
+  margin-bottom: 10px;
+}
+div.body {
+  white-space: pre-wrap;
+}
+</style>

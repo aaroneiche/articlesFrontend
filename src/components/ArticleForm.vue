@@ -9,7 +9,7 @@
                :message="{ 'Please add something to post': bodyError }">
              <b-input type="textarea"
                 minlength="10"
-                maxlength="100"
+                maxlength="1000"
                 placeholder="Put your instructable here!"
                 v-model="body">
             </b-input>
@@ -20,7 +20,7 @@
           <b-select
               multiple
               native-size="4"
-              v-model="selectedOptions">
+              v-model="selectedCategories">
               <option v-for="cat in categories">{{cat}}</option>
           </b-select>
       </b-field>
@@ -38,7 +38,7 @@ export default {
     return {
       title: '',
       body: '',
-      selectedOptions: [],
+      selectedCategories: [],
       categories: [
         'Electronics',
         'Toys',
@@ -63,7 +63,7 @@ export default {
         return false
       }
 
-      if (this.selectedOptions.length === 0) {
+      if (this.selectedCategories.length === 0) {
         this.categoryError = true
         return false
       }
@@ -73,11 +73,11 @@ export default {
         url: 'http://localhost:8080/api/articles',
         data: {
           'title': this.title,
-          'body': this.body
+          'body': this.body,
+          categories: this.selectedCategories
         }
       }).then(res => {
         // error handling
-        alert(res)
         // if successful, provide a link there.
       })
     }
