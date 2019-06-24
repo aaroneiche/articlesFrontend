@@ -32,9 +32,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-h1, h2 {
+/* h1, h2 {
   font-weight: normal;
-}
+} */
 
 ul {
   list-style-type: none;
