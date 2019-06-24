@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{article.title}}</h1>
-    <div>Published on {{article.date}}</div>
+    <div>Published on {{displayDate}}</div>
     <div>{{article.body}}</div>
     <b-loading :is-full-page="true" :active.sync="isLoading" :can-cancel="true"></b-loading>
 
@@ -16,6 +16,7 @@
 
 <script>
 import axios from 'axios'
+import dateformat from 'dateformat'
 
 export default {
   name: 'articlesDisplay',
@@ -38,7 +39,7 @@ export default {
         if (res.status === 200) {
           // if successful, provide a link there.
           this.article = res.data
-          this.displayDate = this.dateFormat(res.data.date)
+          this.displayDate = dateformat(res.data.date, 'mmmm dS, yyyy')
           this.isLoading = false
         }
       }).catch(err => {
@@ -49,10 +50,6 @@ export default {
           this.isLoading = false
         }
       })
-    },
-    dateFormat (date) {
-      var d = Date(date)
-      return d.toLocaleString('ko-KR')
     }
   },
   beforeMount () {

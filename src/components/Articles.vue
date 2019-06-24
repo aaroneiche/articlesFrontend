@@ -20,6 +20,7 @@
 
 <script>
 import axios from 'axios'
+import dateformat from 'dateformat'
 
 export default {
   name: 'articles',
@@ -40,6 +41,10 @@ export default {
       }).then(res => {
         // if successful, provide a link there.
         this.articles = res.data
+
+        this.articles.forEach(a => {
+          a.date = dateformat(a.date, 'mmmm dS, yyyy')
+        })
       })
     }
   }
