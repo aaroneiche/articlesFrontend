@@ -63,7 +63,7 @@ export default {
         return false
       }
 
-      if (this.selectedOptions === 0) {
+      if (this.selectedOptions.length === 0) {
         this.categoryError = true
         return false
       }
